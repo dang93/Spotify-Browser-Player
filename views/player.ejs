@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Some Spotify App</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link rel="shortcut icon" href="#">
+    </head>
+    <body>
+        <div class="container">
+                <script src="https://sdk.scdn.co/spotify-player.js"></script>
+                <script>
+                    window.onSpotifyPlayerAPIReady = () => {
+                        const token = "<%= locals.spot._credentials.accessToken %>";
+                        const player = new Spotify.Player({
+                            name: 'Web Playback SDK Player',
+                            getOAuthToken: cb => { cb(token); }
+                        });
+
+                        // Error handling
+                        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+                        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+                        player.addListener('account_error', ({ message }) => { console.error(message); });
+                        player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+                        // Playback status updates
+                        player.addListener('player_state_changed', state => { console.log(state); });
+
+                        // Ready
+                        player.addListener('ready', ({ device_id }) => {
+                            console.log('Ready with Device ID', device_id);
+                        });
+
+                        // Not Ready
+                        player.addListener('not_ready', ({ device_id }) => {
+                            console.log('Device ID has gone offline', device_id);
+                        });
+
+                        // Connect to the player!
+                        player.connect().then(success => {
+                            if(success) {
+                                console.log(`successfully connected to Spotify`)
+                            } else {
+                                console.log(`did not connect...`)
+                            }
+                        })
+                    };
+                </script>
+            <fieldset>
+                <h1>Spotify Connect Player</h1>
+                <div role="group" class="btn-group">
+                    <form action="/my-playlists" method="GET">
+                        <input type="submit" href="/my-playlists" class="ghost-button" value="Show me my playlists">
+                    </form>
+                    <input type="submit" class="ghost-button" value="Start playing" onclick="startPlaying();">
+                    <script>
+                        function startPlaying() {
+                            $.ajax({
+                                url: `/test-play`,
+                                type: `GET`,
+                                success: function(data) {
+                                    console.log("Data: " + data);
+                                }
+                            });
+                        };
+                    </script>
+                    <input id="pauseButton" type=submit class="ghost-button" value="Pause" onclick="pauseSong();">
+                        <script>
+                            function pauseSong() {
+                                $.ajax({
+                                    url: `/pause`,
+                                    type: `GET`, 
+                                    success: function(data) {
+                                        console.log("Data: " + data);
+                                    }
+                                });
+                            };
+                        </script>
+                    <input type="submit" class="ghost-button" value="Resume" onclick="resumeSong();">
+                        <script>
+                            function resumeSong() {
+                                $.ajax({
+                                    url: `/resume`,
+                                    type: `GET`,
+                                    success: function(data) {
+                                        console.log("Data: " + data);
+                                    }
+                                });
+                            };
+                        </script>
+                </div>
+            </fieldset>
+        </div>
+    </body>
+</html>

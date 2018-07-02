@@ -1,0 +1,70 @@
+body {
+    width: 800px;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #9bd2f7;
+}
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.btn-group {
+    display: inline-block;
+}
+
+fieldset {
+    display: inline-block;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0em;
+    -webkit-padding-start: 0em;
+    -webkit-padding-end: 0em;
+    -webkit-padding-after: 0em;
+    border: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    min-width: -webkit-min-content;
+    padding: 30px;
+}
+
+.ghost-button {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid #fcfffc;
+    color: #fcfffc;
+    font-weight: bolder;
+    font-size: 25px;
+    padding: 10px 30px;
+    margin: 4px 4px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    text-decoration: none;
+}
+.ghost-button:hover {
+    background-color: #fcfffc;
+    border:2px solid #fcfffc;
+    color: #9bd2f7;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}

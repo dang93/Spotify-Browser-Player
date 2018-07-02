@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Some Spotify App</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="#">
+    </head>
+    <body>
+        <div class="container">
+            <fieldset>
+                <h1>Login</h1>
+                <div role="group" class="btn-group">
+                    <form action="/login-authorize" method="GET">
+                        <input type="submit" href="/login-authorize" class="ghost-button" value="Log in with Spotify">
+                    </form>
+                    <form action="/to-player" method="GET">
+                        <input type="submit" class="ghost-button" value="Go To Player">
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Some Spotify App</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Spotify Web Application</h1>
+            <table id="playlist-table">
+                <thead>
+                    <tr>
+                        <th>Owner</th>
+                        <th>Name of playlist</th>
+                        <th>Number of tracks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% console.log(Object.prototype.toString.call(locals.data)) %>
+                    <% for (var playlist in locals.info.body.items) { %>
+                        <tr>
+                            <td><%=locals.info.body.items[playlist].owner.id %></td>
+                            <td><%=locals.info.body.items[playlist].name %></td>
+                            <td><%=locals.info.body.items[playlist].tracks.total %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
